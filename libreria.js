@@ -27,17 +27,19 @@ const getRemoteLibraries = function () {
                             <h5 class="card-title">${books.title}</h5>
                             <p class="card-text">Prezzo: €${books.price}</p>
                            <div class="mt-auto d-flex justify-content-evenly">
-                            <button class="btn btn-danger mt-auto" id="scarta">Scarta</button>
-                            <button class="btn btn-primary mt-auto" id="aggiungi">Aggiungi</button>
+                            <button class="btn btn-danger mt-auto scarta" >Scarta</button>
+                            <button class="btn btn-primary mt-auto aggiungi" >Aggiungi</button>
                             </div>
                         </div>
                     </div>
                 `;
         booksContainer.appendChild(card);
       });
-      const deleteThis = document.getElementById("scarta");
-      deleteThis.addEventListener("click", () => {
-        card.remove();
+      const discard = document.querySelectorAll(".scarta");
+      discard.forEach((button) => {
+        button.addEventListener("click", function () {
+          this.closest(".col").remove();
+        });
       });
     })
     .catch((err) => {
